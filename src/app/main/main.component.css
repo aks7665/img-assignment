@@ -1,0 +1,12 @@
+.itemBox {
+  padding: 15px;
+}
+
+.cp {
+  cursor: pointer;
+}
+
+.img {
+  height: 200px;
+  width: 100%;
+}

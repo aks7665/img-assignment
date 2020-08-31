@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row mt-5 mb-5">
+    <div class="col-4 offset-md-4 ">
+      <input type="file" accept="image/*" #filePicker [hidden]="true" (change)="onImageChange($event)">
+      <div class="alert alert-primary text-center cp" role="alert" (click)="filePicker.click()">
+        Click here to upload image
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <div class="row mb-2" *ngFor="let box of [].constructor(6); let i = index" (click)="hasImageOnIndex(i) ? onViewImage(i) : filePicker.click()">
+        <div class="col-md-4 offset-md-4 bg-primary itemBox cp">
+          <div class="row" *ngIf="hasImageOnIndex(i); else noImgBox">
+            <div class="col-12" *ngIf="clickedBoxIndex === i">
+              <img [src]="this.fileUrl[i]" alt="" class="img">
+            </div>
+            <div class="col-12 text-center mt-1" *ngIf="clickedBoxIndex !== i">
+              Click on the box to view image
+            </div>
+            <div class="col-12 text-center mt-1">
+              <button type="button" class="btn btn-danger" (click)="onRemove(i)">Remove Image</button>
+            </div>
+          </div>
+          <ng-template #noImgBox>
+            <div class="row text-center">
+              <div class="col-12">
+                No image uploaded for this box.
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
